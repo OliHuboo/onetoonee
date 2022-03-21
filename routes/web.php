@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Models\User;
+use App\Models\Address;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,4 +16,16 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+
+Route::get('/insert', function () {
+    $user = User::findOrFail(1);
+
+    $address = new Address(['name'=>'1234 Something Avenue']);
+
+    $user -> address()->save($address);
+
+
+
 });
